@@ -1,3 +1,4 @@
+// CodecCommander configuration for ALC256
 DefinitionBlock ("SSDT-ALC256.aml", "SSDT", 1, "hack", "hack", 0x00003000)
 {
     External(_SB.PCI0.HDEF, DeviceObj)
@@ -20,7 +21,23 @@ DefinitionBlock ("SSDT-ALC256.aml", "SSDT", 1, "hack", "hack", 0x00003000)
                 Package()
                 {
                     // 0x21 SET_UNSOLICITED_ENABLE 0x83
-                    "Commannd", Buffer() { 0x02, 0x17, 0x08, 0x83 },
+                    "Command", Buffer() { 0x02, 0x17, 0x08, 0x83 },
+                    "On Init", ">y",
+                    "On Sleep", ">n",
+                    "On Wake", ">y",
+                },
+                Package()
+                {
+                    // 0x20 SET_COEF_INDEX 0x36
+                    "Command", Buffer() { 0x02, 0x05, 0x00, 0x36 },
+                    "On Init", ">y",
+                    "On Sleep", ">n",
+                    "On Wake", ">y",
+                },
+                Package()
+                {
+                    // 0x20 SET_PROC_COEF 0x1737
+                    "Command", Buffer() { 0x02, 0x04, 0x17, 0x37 },
                     "On Init", ">y",
                     "On Sleep", ">n",
                     "On Wake", ">y",
@@ -32,4 +49,3 @@ DefinitionBlock ("SSDT-ALC256.aml", "SSDT", 1, "hack", "hack", 0x00003000)
         },
     })
 }
-
