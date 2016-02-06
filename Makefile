@@ -62,8 +62,6 @@ DYN:=$(subst $(UNPATCHED)/,,$(subst .dsl,,$(DYN)))
 #GFXSSDT:=$(subst $(UNPATCHED)/,,$(subst .dsl,,$(GFXSSDT)))
 GFXSSDT=SSDT-5
 
-#PRODUCTS=$(BUILDDIR)/dsdt.aml $(BUILDDIR)/$(GFXSSDT).aml $(BUILDDIR)/$(ADDLSSDT1).aml $(BUILDDIR)/$(PPC).aml $(BUILDDIR)/$(DYN).aml
-
 PRODUCTS=$(BUILDDIR)/dsdt.aml $(BUILDDIR)/$(GFXSSDT).aml $(BUILDDIR)/$(PPC).aml $(BUILDDIR)/$(DYN).aml $(BUILDDIR)/SSDT-0.aml $(BUILDDIR)/SSDT-3.aml $(BUILDDIR)/SSDT-4.aml $(BUILDDIR)/SSDT-6.aml
 
 
@@ -91,10 +89,6 @@ $(BUILDDIR)/SSDT-3.aml: $(PATCHED)/SSDT-3.dsl
 $(BUILDDIR)/SSDT-4.aml: $(PATCHED)/SSDT-4.dsl
 	$(IASL) $(IASLFLAGS) -p $@ $<
 
-#$(BUILDDIR)/$(ADDLSSDT1).aml: $(PATCHED)/$(ADDLSSDT1).dsl
-#	$(IASL) $(IASLFLAGS) -p $@ $<
-
-
 # Clean everything but the disassembled unpatched dsdt
 clean:
 	rm -f $(PRODUCTS)
@@ -116,34 +110,36 @@ install: $(PRODUCTS)
 	cp $(BUILDDIR)/SSDT-0.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched/
 	cp $(BUILDDIR)/SSDT-3.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched/
 	cp $(BUILDDIR)/SSDT-4.aml $(EFIDIR)/EFI/CLOVER/ACPI/patched/
-#	cp $(BUILDDIR)/$(ADDLSSDT1).aml $(EFIDIR)/EFI/CLOVER/ACPI/patched/ssdt-4.aml
 	diskutil unmount $(EFIDIR)
 	if [ -d $(EFIDIR) ]; then rmdir $(EFIDIR); fi
 
 # Patch with 'patchmatic'
 patch:
-#	cp $(UNPATCHED)/dsdt.dsl $(UNPATCHED)/$(GFXSSDT).dsl $(UNPATCHED)/$(ADDLSSDT1).dsl $(UNPATCHED)/$(PPC).dsl $(UNPATCHED)/$(DYN).dsl $(PATCHED)
 	cp $(UNPATCHED)/dsdt.dsl $(UNPATCHED)/$(GFXSSDT).dsl $(UNPATCHED)/$(PPC).dsl $(UNPATCHED)/$(DYN).dsl $(UNPATCHED)/SSDT-0.dsl $(UNPATCHED)/SSDT-3.dsl $(UNPATCHED)/SSDT-4.dsl $(PATCHED)
-	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/syntax_dsdt.txt $(PATCHED)/dsdt.dsl
 
+	# Syntax
+	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/syntax_dsdt.txt $(PATCHED)/dsdt.dsl
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/SAT0._DSM.txt $(PATCHED)/dsdt.dsl
 	perl -i -pe 's/_DSM/XDSM/g' $(PATCHED)/dsdt.dsl
-
-
 	$(PATCHMATIC) $(PATCHED)/$(GFXSSDT).dsl $(LAPTOPGIT)/syntax/remove_DSM.txt $(PATCHED)/$(GFXSSDT).dsl
 
+	# Audio
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/rename-HDAS-HDEF.txt $(PATCHED)/dsdt.dsl
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/audio.txt $(PATCHED)/dsdt.dsl
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/system/system_IRQ.txt $(PATCHED)/dsdt.dsl
 
+	# Brightness
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/graphics/graphics_PNLF.txt $(PATCHED)/dsdt.dsl
+	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/system_OSYS.txt $(PATCHED)/dsdt.dsl
+	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/keyboard.txt $(PATCHED)/dsdt.dsl
+
+
 
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/battery/battery_Dell-XPS-13.txt $(PATCHED)/dsdt.dsl
 
 #	BREAKS?
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/remove_wmi.txt $(PATCHED)/dsdt.dsl
 
-#	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/keyboard.txt $(PATCHED)/dsdt.dsl
 
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/graphics/graphics_Rename-GFX0.txt $(PATCHED)/dsdt.dsl
 #	$(PATCHMATIC) $(PATCHED)/$(GFXSSDT).dsl $(LAPTOPGIT)/graphics/graphics_Rename-GFX0.txt $(PATCHED)/$(GFXSSDT).dsl
@@ -151,7 +147,6 @@ patch:
 
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/usb/usb_7-series.txt $(PATCHED)/dsdt.dsl
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/system/system_WAK2.txt $(PATCHED)/dsdt.dsl
-#	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/system_OSYS.txt $(PATCHED)/dsdt.dsl
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/system/system_MCHC.txt $(PATCHED)/dsdt.dsl
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/system/system_HPET.txt $(PATCHED)/dsdt.dsl
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/system/system_RTC.txt $(PATCHED)/dsdt.dsl
@@ -175,12 +170,12 @@ patch:
 
 patch_debug: patch
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(DEBUGGIT)/debug.txt $(PATCHED)/dsdt.dsl
-#	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(DEBUGGIT)/instrument_Qxx.txt $(PATCHED)/dsdt.dsl
+	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(DEBUGGIT)/instrument_Qxx.txt $(PATCHED)/dsdt.dsl
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(DEBUGGIT)/instrument_WAK_PTS.txt $(PATCHED)/dsdt.dsl
-	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/instrument_TTS.txt $(PATCHED)/dsdt.dsl
-#	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(DEBUGGIT)/instrument_Lxx.txt $(PATCHED)/dsdt.dsl
+#	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/instrument_TTS.txt $(PATCHED)/dsdt.dsl
+	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(DEBUGGIT)/instrument_Lxx.txt $(PATCHED)/dsdt.dsl
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/instrument_Qxx.txt $(PATCHED)/dsdt.dsl
-	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/instrument_SBUS.txt $(PATCHED)/dsdt.dsl
+#	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/instrument_SBUS.txt $(PATCHED)/dsdt.dsl
 
 
 # Disassemble DSDT/SSDTs from linux_native/ acpi extract
@@ -195,11 +190,11 @@ get_acpi:
 	if [ -d $(EFIDIR) ]; then rmdir $(EFIDIR); fi
 
 
-# Patch AppleHDA for ALC668 codec
+# Patch AppleHDA for ALC256 codec
 patch_hda:
 	$(PATCH_HDA_SCRIPT)
 
-# Install AppleHDA_ALC668.kext injector in SLE
+# Install AppleHDA_ALC256.kext injector in SLE
 install_hda:
 	if [ -d /System/Library/Extensions/AppleHDA_$(HDACODEC).kext ]; \
 	then rm -rf /System/Library/Extensions/AppleHDA_$(HDACODEC).kext && cp -R $(BUILDDIR)/AppleHDA_$(HDACODEC).kext /System/Library/Extensions/; \

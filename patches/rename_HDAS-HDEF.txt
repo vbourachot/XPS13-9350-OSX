@@ -1,7 +1,7 @@
 #Based on:
 #graphics_Rename-GFX0.txt Maintained by: RehabMan for: Laptop Patches
 
-# rename HDAS -> HDEF for better power management
+# rename HDAS -> HDEF
 into_all all code_regex HDAS\. replaceall_matched begin HDEF. end;
 into_all all code_regex \.HDAS replaceall_matched begin .HDEF end;
 into_all all code_regex \sHDAS, replaceall_matched begin HDEF, end;

@@ -85,7 +85,7 @@
 			<string>SSDT-5.aml</string>
 			<string>SSDT-6.aml</string>
 			<string>SSDT-14.aml</string>
-			<string>SSDT-99.aml</string>
+			<string>SSDT-19.aml</string>
 		</array>
 		<key>DSDT</key>
 		<dict>
@@ -174,17 +174,7 @@
 			</dict>
 			<dict>
 				<key>Name</key>
-				<string>#AppleIntelFramebufferAzul</string>
-				<key>Comment</key>
-				<string>0x0a260006 6->9MB cursor bytes patch</string>
-				<key>Find</key>
-				<string>0600260a01030303000000020000300100006000</string>
-				<key>Replace</key>
-				<string>0600260a01030303000000020000300100009000</string>
-			</dict>
-			<dict>
-				<key>Name</key>
-				<string>#AppleHDA</string>
+				<string>AppleHDA</string>
 				<key>Comment</key>
 				<string>Expect 2 matches</string>
 				<key>Find</key>
@@ -194,7 +184,7 @@
 			</dict>
 			<dict>
 				<key>Name</key>
-				<string>#AppleHDA</string>
+				<string>AppleHDA</string>
 				<key>Comment</key>
 				<string>Expect 2 matches</string>
 				<key>Find</key>
@@ -204,17 +194,17 @@
 			</dict>
 			<dict>
 				<key>Name</key>
-				<string>#AppleHDA</string>
+				<string>AppleHDA</string>
 				<key>Comment</key>
 				<string>Expect 2 matches</string>
 				<key>Find</key>
 				<string>8419d411</string>
 				<key>Replace</key>
-				<string>6806ec10</string>
+				<string>5602ec10</string>
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>#AppleHDA (#4 of 4, new in 10.11, credit lisai9093)</string>
+				<string>AppleHDA (#4 of 4, new in 10.11, credit lisai9093)</string>
 				<key>Find</key>
 				<data>gxnUEQ==</data>
 				<key>Name</key>
@@ -228,7 +218,7 @@
 				<key>Find</key>
 				<data>AQAAdRc=</data>
 				<key>Name</key>
-				<string>#IOGraphicsFamily</string>
+				<string>IOGraphicsFamily</string>
 				<key>Replace</key>
 				<data>AQAA6xc=</data>
 			</dict>
@@ -257,9 +247,11 @@
 		<string>Detect</string>
 	</dict>
 	<key>SMBIOS</key>
-	<dict>
-		<key>ProductName</key>
-		<string>MacBook8,2</string>
-	</dict>
+        <dict>
+                <key>ProductName</key>
+                <string>MacBookAir6,2</string>
+                <key>BiosVersion</key>
+                <string>MBA61.88Z.0099.B12.1405241030</string>
+        </dict>
 </dict>
 </plist>

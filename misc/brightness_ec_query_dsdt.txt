@@ -1,0 +1,37 @@
+_Q66()
+SMIE()
+SMEE():
+...
+        If ((\_SB.OSID () >= 0x20))
+        {
+            If ((Local0 & 0x04))
+            {
+                EV5 (One, Zero)
+            }
+
+            If ((Local0 & 0x02))
+            {
+                EV5 (0x02, Zero)
+            }
+        }
+...
+Patching here works. Note OSID >= 0x20 (system_OSYS patch required)
+
+EV5()
+GFX0.BRT6()
+
+    Scope (_SB.PCI0.GFX0)
+    {
+        Method (BRT6, 2, NotSerialized)
+        {
+            If ((Arg0 == One))
+            {
+                Notify (LCD, 0x86)
+            }
+
+            If ((Arg0 & 0x02))
+            {
+                Notify (LCD, 0x87)
+            }
+        }
+    }

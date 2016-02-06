@@ -1,0 +1,48 @@
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Version 2.5.0 starting on OS X Darwin 15.3.
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: IntelHDA::initialize
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Device memory @ 0x7f91028000, size 0x00004000
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Memory mapped at @ 0x<ptr>
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Evaluating device "IOService:/AppleACPIPlatformExpert/PCI0@0/AppleACPIPCI/HDEF@1F,3" [8086:9d70].
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....CodecVendor Id: 0x10ec0256
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....Codec Address: 0
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....Subsystem Id: 0x10280704
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....PCI Sub Id: 0x10280704
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....Output Streams: 1
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....Input Streams: 0
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....Bidi Streams: 23
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....Serial Data: 0
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....x64 Support: 1
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....Codec Version: 1.0
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....Vendor Id: 0x10ec
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ....Device Id: 0x0256
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Configuration
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Check Infinite: false
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Check Interval: 3000
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Perform Reset: false
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Perform Reset on External Wake: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Perform Reset on EAPD Fail: false
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Send Delay: 10
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Update Nodes: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Sleep Nodes: false
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Custom Command
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Command: 0x01970725
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnInit: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnWake: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnSleep: false
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Custom Command
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Command: 0x01970725
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnInit: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnWake: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnSleep: false
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Custom Command
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Command: 0x01970725
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnInit: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnWake: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnSleep: false
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Custom Command
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...Command: 0x01970725
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnInit: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnWake: true
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: ...OnSleep: false
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: Getting EAPD supported node list.
+Feb  5 00:52:35 victors-MacBook kernel[0]: CodecCommander: SendCommand: node 0x00, verb 0x000f00, payload 0x04.

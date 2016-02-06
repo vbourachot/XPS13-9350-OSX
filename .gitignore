@@ -17,3 +17,4 @@ origin/*.aml
 origin/Dumplog.txt
 dl/*
 patches/9333/*
+ssdt/*.aml
