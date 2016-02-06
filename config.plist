@@ -178,39 +178,49 @@
 				<key>Comment</key>
 				<string>Expect 2 matches</string>
 				<key>Find</key>
-				<string>8408ec10</string>
-				<key>Replace</key>
-				<string>00000000</string>
-			</dict>
-			<dict>
-				<key>Name</key>
-				<string>AppleHDA</string>
-				<key>Comment</key>
-				<string>Expect 2 matches</string>
-				<key>Find</key>
-				<string>8508ec10</string>
-				<key>Replace</key>
-				<string>00000000</string>
-			</dict>
-			<dict>
-				<key>Name</key>
-				<string>AppleHDA</string>
-				<key>Comment</key>
-				<string>Expect 2 matches</string>
-				<key>Find</key>
-				<string>8419d411</string>
-				<key>Replace</key>
-				<string>5602ec10</string>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>AppleHDA (#4 of 4, new in 10.11, credit lisai9093)</string>
-				<key>Find</key>
-				<data>gxnUEQ==</data>
-				<key>Name</key>
-				<string>AppleHDA</string>
+				<data>YQLsEA==</data>
 				<key>Replace</key>
 				<data>AAAAAA==</data>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>AppleHDA</string>
+				<key>Comment</key>
+				<string>Expect 2 matches</string>
+				<key>Find</key>
+				<data>YgLsEA==</data>
+				<key>Replace</key>
+				<data>AAAAAA==</data>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>AppleHDA</string>
+				<key>Comment</key>
+				<string>Expect 2 matches</string>
+				<key>Find</key>
+				<data>hQjsEA==</data>
+				<key>Replace</key>
+				<data>AAAAAA==</data>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>AppleHDA</string>
+				<key>Comment</key>
+				<string>Expect 2 matches</string>
+				<key>Find</key>
+				<data>gxnUEQ==</data>
+				<key>Replace</key>
+				<data>AAAAAA==</data>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>AppleHDA</string>
+				<key>Comment</key>
+				<string>Expect 2 matches</string>
+				<key>Find</key>
+				<data>hBnUEQ==</data>
+				<key>Replace</key>
+				<data>VgLsEA==</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
