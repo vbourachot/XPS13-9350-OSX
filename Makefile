@@ -124,7 +124,7 @@ patch:
 	$(PATCHMATIC) $(PATCHED)/$(GFXSSDT).dsl $(LAPTOPGIT)/syntax/remove_DSM.txt $(PATCHED)/$(GFXSSDT).dsl
 
 	# Audio
-	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/rename-HDAS-HDEF.txt $(PATCHED)/dsdt.dsl
+	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/rename_HDAS-HDEF.txt $(PATCHED)/dsdt.dsl
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/audio.txt $(PATCHED)/dsdt.dsl
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/system/system_IRQ.txt $(PATCHED)/dsdt.dsl
 
@@ -132,6 +132,14 @@ patch:
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/graphics/graphics_PNLF.txt $(PATCHED)/dsdt.dsl
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/system_OSYS.txt $(PATCHED)/dsdt.dsl
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/keyboard.txt $(PATCHED)/dsdt.dsl
+
+	# Graphics
+	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/graphics/graphics_Rename-GFX0.txt $(PATCHED)/dsdt.dsl
+	$(PATCHMATIC) $(PATCHED)/$(GFXSSDT).dsl $(LAPTOPGIT)/graphics/graphics_Rename-GFX0.txt $(PATCHED)/$(GFXSSDT).dsl
+
+	# System
+	# TODO: Replace with a proper skylake LPC when OSX supports it
+	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/misc/misc_Haswell-LPC.txt $(PATCHED)/dsdt.dsl
 
 
 
@@ -141,8 +149,6 @@ patch:
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/remove_wmi.txt $(PATCHED)/dsdt.dsl
 
 
-#	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/graphics/graphics_Rename-GFX0.txt $(PATCHED)/dsdt.dsl
-#	$(PATCHMATIC) $(PATCHED)/$(GFXSSDT).dsl $(LAPTOPGIT)/graphics/graphics_Rename-GFX0.txt $(PATCHED)/$(GFXSSDT).dsl
 #	$(PATCHMATIC) $(PATCHED)/$(GFXSSDT).dsl patches/hdmi_audio.txt $(PATCHED)/$(GFXSSDT).dsl
 
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/usb/usb_7-series.txt $(PATCHED)/dsdt.dsl
@@ -157,8 +163,6 @@ patch:
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/system/system_ADP1.txt $(PATCHED)/dsdt.dsl
 
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/system/system_ADP1.txt $(PATCHED)/dsdt.dsl
-##	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(LAPTOPGIT)/misc/misc_Haswell-LPC.txt $(PATCHED)/dsdt.dsl
-#	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/remove_GLAN.txt $(PATCHED)/dsdt.dsl
 #	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/rename_B0D3.txt $(PATCHED)/dsdt.dsl
 ##	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/fix_WAK.txt $(PATCHED)/dsdt.dsl
 ##	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/fix_OCNT.txt $(PATCHED)/dsdt.dsl
@@ -166,7 +170,7 @@ patch:
 ##	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/add_SMCD.txt $(PATCHED)/dsdt.dsl
 ##	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/lpss.txt $(PATCHED)/dsdt.dsl
 ##	$(PATCHMATIC) $(PATCHED)/dsdt.dsl patches/usb_XHC1.txt $(PATCHED)/dsdt.dsl
-#	$(PATCHMATIC) $(PATCHED)/$(PPC).dsl patches/syntax_ppc.txt $(PATCHED)/$(PPC).dsl
+
 
 patch_debug: patch
 	$(PATCHMATIC) $(PATCHED)/dsdt.dsl $(DEBUGGIT)/debug.txt $(PATCHED)/dsdt.dsl
